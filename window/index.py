@@ -16,7 +16,7 @@ class Window(tk.Tk): #自定義
         label:ttk.Label = ttk.Label(self,
                                     text="eeh...",
                                     font=('Arial',30,'bold'),
-                                    foreground='#F00')
+                                    foreground='#00F')
         label.pack(padx=50,pady=50)
 
 # names:list[str] = get_names()
