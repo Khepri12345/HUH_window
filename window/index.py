@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 
 def get_names() -> list[str]: #區域變數
     with open('names.txt',encoding="utf-8") as file:
@@ -12,6 +13,11 @@ class Window(tk.Tk): #自定義
     def __init__(self, title:str="Halo! TK!", **kwargs):
         super().__init__(**kwargs)
         self.title(title)
+        label:ttk.Label = ttk.Label(self,
+                                    text="eeh...",
+                                    font=('Arial',30,'bold'),
+                                    foreground='#F00')
+        label.pack(padx=50,pady=50)
 
 # names:list[str] = get_names()
 if __name__ == "__main__": #文件變數
