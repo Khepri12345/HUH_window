@@ -12,4 +12,5 @@ def get_names() -> list[str]: #區域變數
 if __name__ == "__main__": #文件變數
     names:list[str] = get_names()
     window:tk.Tk = tk.Tk()
+    window.title("我的GUI程式")
     window.mainloop()
