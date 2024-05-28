@@ -8,9 +8,13 @@ def get_names() -> list[str]: #區域變數
     # print(name)
     return names
 
+class Window(tk.Tk): #自定義
+    def __init__(self):
+        super().__init__()
+        self.title("我的GUI程式")
+
 # names:list[str] = get_names()
 if __name__ == "__main__": #文件變數
     names:list[str] = get_names()
-    window:tk.Tk = tk.Tk()
-    window.title("我的GUI程式")
+    window:Window = Window() #繼承
     window.mainloop()
