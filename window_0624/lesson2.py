@@ -1,6 +1,7 @@
 import psycopg2
 import data
 
+
 def main():
     conn = psycopg2.connect("postgresql://tvdi_piwl_user:6khvgKZfZEjoce0jmn4711t8tGmoXeed@dpg-cpscsul6l47c73e3h7a0-a.singapore-postgres.render.com/tvdi_piwl")
 
