@@ -4,7 +4,7 @@
 {{super()}} - 首頁
 {%endblock%}
 
-{%block title%}
+{%block head%}
 {{super()}}
 <style type"text/css">
 body {
@@ -12,3 +12,7 @@ body {
 }
 </style>
 {%endblock%}
+
+{% block left_content%}
+{{ left }}
+{% endblock%}
