@@ -1,7 +1,17 @@
 from flask import Flask,render_template
+from dotenv import load_dotenv
+import data
+load_dotenv()
 
 app = Flask(__name__)
 @app.route("/")
 def index():
-    content = 'Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined classes.'
-    return render_template('index.html.jinja',left=content)
+    #print(list(map(lambda value:value[0],data.get_areas())))
+    selected_area = request.args.get('area')
+    areas = [tup[0] for tup in data.get_areas()]
+    if selected_area is None:
+        print("第一次進入")
+        return render_template('index.html.jinja',areas=areas)
+    else:
+        print(selected_area)
+        return render_template('index.html.jinja',areas=areas)
