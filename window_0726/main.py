@@ -1,16 +1,24 @@
 from flask import Flask,render_template,request
-from dotenv import load_dotenv
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
+from werkzeug.serving import run_simple
 import data
-load_dotenv()
+from dashboard.board1 import app1
+from dashboard.board2 import app2
+import dashboard
 
 app = Flask(__name__)
-@app.route("/")
 
-def index1():
-    return render_template("index1.html.jinja")
+application = DispatcherMiddleware(app,{
+    "/dashboard/app1":app1.server,
+    "/dashboard/app1":app2.server
+})
+
+@app.route("/")
+def index():
+    return render_template("index.html.jinja")
 @app.route("/index1")
 
-def index():
+def index1():
     #print(list(map(lambda value:value[0],data.get_areas())))
     selected_area = request.args.get('area')
     areas = [tup[0] for tup in data.get_areas()]
@@ -20,4 +28,7 @@ def index():
     #areas->所有行政區 
     #show_area -> 要顯示的行政區
     #detail_snaes -> 該行政區所有站點資訊   
-    return render_template('index.html.jinja',areas=areas,show_area=selected_area,detail_snaes=detail_snaes)
+    return render_template('index1.html.jinja',areas=areas,show_area=selected_area,detail_snaes=detail_snaes)
+
+if __name__ == '__main__':
+    run_simple("localhost",8080,application,use_debugger=True,use_reloader=True)
