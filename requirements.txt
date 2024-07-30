@@ -4,3 +4,10 @@ flask
 gunicorn
 dash
 pandas
+pydantic
+requests
+ttkthemes
+tkintermapview
+matplotlib
+numpy
+pandas
