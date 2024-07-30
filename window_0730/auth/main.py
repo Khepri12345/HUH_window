@@ -2,6 +2,7 @@ from flask import Blueprint,render_template,request
 from flask_wtf import FlaskForm
 from wtforms import EmailField,PasswordField
 from wtforms.validators import DataRequired,Length
+from .datasource import validateUser
 
 auth_blueprint = Blueprint('auth',__name__)
 
@@ -23,6 +24,11 @@ def index():
             password = form.password.data
             print(f"email={email}")
             print(f"password={password}")
+            is_ok, username = validateUser(email,password)
+            if is_ok:
+                print(f"您好:{username}")
+            else:
+                print(f'密碼錯誤')
     else:
         print("第一次進入")
     return render_template('/auth/login.html.jinja',form=form)
