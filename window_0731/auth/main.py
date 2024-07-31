@@ -33,3 +33,8 @@ def index():
     else:
         print("第一次進入")
     return render_template('/auth/login.html.jinja',form=form)
+
+@auth_blueprint.route("/auth/logout")
+def logout():
+    session.pop('username')
+    return redirect('/')
