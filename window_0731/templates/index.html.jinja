@@ -15,5 +15,10 @@
 
 
 {% block main%}
+{% if username %}
+<h3>歡迎 {{username}}</h3>
+{% else %}
+{% endif %}
+
 <h1>這是首頁</h1>
 {% endblock %}
