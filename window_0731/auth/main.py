@@ -14,7 +14,7 @@ class LoginForm(FlaskForm):
 @auth_blueprint.route('/auth/',methods=['GET','POST'])
 
 @auth_blueprint.route('/auth/login',methods=['GET','POST'])
-def index():
+def index(email:str | None = None):
     form = LoginForm()
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -29,7 +29,8 @@ def index():
                 session['username'] = username
                 return redirect('/')
             else:
-                print(f'密碼錯誤')
+                form.email.errors.append('密碼錯誤')
+                form.email.data = ""
     else:
         print("第一次進入")
     return render_template('/auth/login.html.jinja',form=form)
